@@ -259,17 +259,13 @@ public class ConverterForm {
         return longResult;
     }
     public double resultTempValue(String valueTempFrom, String valueTempTo ,double valueTempToConvert){
+        System.out.println(valueTempFrom + " " + valueTempTo + " " + valueTempToConvert);
+        Temperature temp = new Temperature();
         double tempResult = 0;
-        if(valueTempFrom.equals(valueTempTo)) return tempResult =valueTempToConvert;
-        Temperature celsius = new Temperature("Celsius", 273.15, 0, 32);
-        Temperature kelvin = new Temperature("Kelvin", 0, -273.15, -459.67);
-        Temperature fahrenheit = new Temperature("Fahrenheit", 255.372, -17.7778, 0);
-        if (valueTempFrom.equalsIgnoreCase("Celsius")) {
-            tempResult = celsius.convertTo(valueTempFrom, valueTempTo, valueTempToConvert);
-        } else if (valueTempFrom.equalsIgnoreCase("Kelvin")) {
-            tempResult = kelvin.convertTo(valueTempFrom, valueTempTo, valueTempToConvert);
-        } else if (valueTempFrom.equalsIgnoreCase("Fahrenheit")) {
-            tempResult = fahrenheit.convertTo(valueTempFrom, valueTempTo, valueTempToConvert);
+        if(valueTempFrom.equals(valueTempTo)){
+            return valueTempToConvert;
+        }else {
+            tempResult= temp.convertTo(valueTempFrom, valueTempTo, valueTempToConvert);
         }
         return tempResult;
     }

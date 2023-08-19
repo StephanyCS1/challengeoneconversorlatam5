@@ -1,4 +1,7 @@
 package Unids;
+
+import java.util.Scanner;
+
 /**
  * @author Stephany Castro Salas
  */
@@ -23,30 +26,6 @@ public class Temperature implements convertTo {
         Celsius = celsius;
         Fahrenheit = fahrenheit;
     }
-
-    public double getKelvin() {
-        return Kelvin;
-    }
-
-    public void setKelvin(double kelvin) {
-        Kelvin = kelvin;
-    }
-
-    public double getCelsius() {
-        return Celsius;
-    }
-
-    public void setCelsius(double celsius) {
-        Celsius = celsius;
-    }
-
-    public double getFahrenheit() {
-        return Fahrenheit;
-    }
-
-    public void setFahrenheit(double fahrenheit) {
-        Fahrenheit = fahrenheit;
-    }
     /**
      * This is an interface method is called to determine the converted value, you must pass this parameters
      *
@@ -60,15 +39,30 @@ public class Temperature implements convertTo {
         double valurResult= 0;
         switch (to) {
             case "Kelvin":
-                valurResult= value * this.Kelvin;
+                if (from.equalsIgnoreCase("Celsius")) {
+                    valurResult = value + 273.15;
+                } else if (from.equalsIgnoreCase("Fahrenheit")) {
+                    valurResult = (value - 32) * 5 / 9 + 273.15;
+                }
                 return valurResult;
+
             case "Celsius":
-                valurResult= value * this.Celsius;
+                if (from.equalsIgnoreCase("Kelvin")) {
+                    valurResult = value - 273.15;
+                } else if (from.equalsIgnoreCase("Fahrenheit")) {
+                    valurResult = (value - 32) * 5 / 9;
+                }
                 return valurResult;
+
             case "Fahrenheit":
-                valurResult= value * this.Fahrenheit;
+                if (from.equalsIgnoreCase("Celsius")) {
+                    valurResult = value * 9 / 5 + 32;
+                } else if (from.equalsIgnoreCase("Kelvin")) {
+                    valurResult = (value - 273.15) * 9 / 5 + 32;
+                }
                 return valurResult;
         }
         return valurResult;
     }
+
 }
