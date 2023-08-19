@@ -66,6 +66,8 @@ public class Coins implements convertTo {
         double resultValue = 0;
         switch (to) {
             case "Peso Colombiano":
+                resultValue = value * this.cop;
+                return resultValue;
             case "Euro":
                 resultValue = value * this.euro;
                 return resultValue;
